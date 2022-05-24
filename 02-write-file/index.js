@@ -14,7 +14,7 @@ fs.access('./02-write-file/text.txt', function(error){
 }) 
 
 writableStream._write = (chunk, encoding, next) => {
-    let last_input = chunk.toString().replace(/(\r\n|\n|\r)/gm,"");
+    let last_input = chunk.toString().replace(/(\r\n\r)/gm,"");
     fs.appendFile('./02-write-file/text.txt', last_input, function(err) {
         if(err) return console.error(err);
         else if (last_input == 'exit'){
