@@ -17,7 +17,7 @@ writableStream._write = (chunk, encoding, next) => {
     let last_input = chunk.toString().replace(/(\r\n\r)/gm,"");
     fs.appendFile('./02-write-file/text.txt', last_input, function(err) {
         if(err) return console.error(err);
-        else if (last_input == 'exit'){
+        else if (last_input.includes('exit') == true){
             console.log("Закончили упражнение");
             process.stdin.push(null);
         };
@@ -25,7 +25,7 @@ writableStream._write = (chunk, encoding, next) => {
     });
     };
     process.on('SIGINT', function(){
-        console.log("Закончили упражнение");
+        console.log("Закончили упражнение1");
         process.stdin.push(null);
     });
 
